@@ -15,4 +15,14 @@ contract TodoList{
 
     //mapping is like associative arrays
     mapping(uint => Task) public tasks; //this associate an uint with each Task struct
+
+    constructor() public {
+        createTask("check out mysite");
+    }
+
+    function createTask(string memory _content) public {
+        taskCount ++;
+        //similar to populating a dictionary in python
+        tasks[taskCount] = Task(taskCount, _content, false); //instantiate the struct
+    }
 }
