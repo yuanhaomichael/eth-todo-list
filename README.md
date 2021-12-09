@@ -1,5 +1,8 @@
 Popular commands for Truffle
 
+![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
+
+
 truffle init: new project
 truffle compile: compile smart contract
 truffle migrate: deploy to the chain
