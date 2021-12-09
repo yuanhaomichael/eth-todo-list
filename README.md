@@ -1,7 +1,11 @@
+
+![Alt Text](https://im7.ezgif.com/tmp/ezgif-7-2eaee5499206.gif)
+
+
+
+
+
 Popular commands for Truffle
-
-![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif)
-
 
 truffle init: new project
 truffle compile: compile smart contract
