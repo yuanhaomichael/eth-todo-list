@@ -19,6 +19,7 @@ App = {
         await App.loadAccount()
         await App.loadContract()
         await App.render()
+        
     },
 
     // Metamask boilerplate to connect to metamask and local host
@@ -62,6 +63,7 @@ App = {
         // loading your account from Metamask, the dev account in Ganache which you imported with private key
         App.account = web3.eth.accounts[0]
         console.log(App.account)
+        web3.eth.defaultAccount=web3.eth.accounts[0]
     },
 
     loadContract: async () => {
