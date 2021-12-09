@@ -18,8 +18,22 @@
     <![endif]-->
 
     <style>
+      body {
+        background-color:#eee;
+        font-family: "Rockwell", "Calibri";
+      }
       main {
         margin-top: 60px;
+        font-size: 1.3rem;
+        font-weight: 50;
+      }
+      #newTask {
+        font-size:1.3rem;
+        height: 3rem;
+      }
+
+      #adheight{
+        height:2rem;
       }
 
       #content {
@@ -28,7 +42,8 @@
 
       form {
         width: 350px;
-        margin-bottom: 10px;
+        margin-top: 130px;
+        margin-bottom: 60px;
       }
 
       ul {
@@ -39,38 +54,144 @@
         color: grey;
         text-decoration: line-through;
       }
+      /* Switch 4 Specific Style Start */
+      .wrapper{
+        height:5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: inline-block;
+  width: 100px;
+  margin: 1vh auto 0;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+.switch_box{
+
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  max-width: 70px;
+  min-width: 70px;
+  height: 40px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+/* Switch 1 Specific Styles Start */
+
+.box_1{
+  background: #eee;
+}
+
+input[type="checkbox"].switch_1{
+  font-size: 30px;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  width: 3.5em;
+  height: 1.5em;
+  background: #ddd;
+  border-radius: 3em;
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  -webkit-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+  }
+  
+  input[type="checkbox"].switch_1:checked{
+  background: greenyellow;
+  }
+  
+  input[type="checkbox"].switch_1:after{
+  position: absolute;
+  content: "";
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
+  background: #fff;
+  -webkit-box-shadow: 0 0 .25em rgba(0,0,0,.3);
+          box-shadow: 0 0 .25em rgba(0,0,0,.3);
+  -webkit-transform: scale(.7);
+          transform: scale(.7);
+  left: 0;
+  -webkit-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+  }
+  
+  input[type="checkbox"].switch_1:checked:after{
+  left: calc(100% - 1.5em);
+  }
+  
+/* Switch 1 Specific Style End */
+
+span.content {
+    margin-top: 0.8rem;
+}
+
+label{
+  display: inline-flex;
+}
+
+
+
     </style>
   </head>
   <body>
-    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-      <span class="navbar-brand col-sm-3 col-md-2 mr-0" target="_blank">Todo List</span>
+    <nav class="navbar navbar-dark fixed-top bg-grey flex-md-nowrap p-0 shadow">
+      <span class="navbar-brand col-sm-3 col-md-2 mr-0" target="_blank" style="font-size: 1.3rem; color: black; margin-top: .5rem;">Taskit</span>
+
       <ul class="navbar-nav px-3">
         <li class="nav-item text-nowrap d-none d-sm-none d-sm-block">
-          <small><a class="nav-link" href="#"><span id="account"></span></a></small>
+          <small><a class="nav-link" href="#" style="color: gray;"><span id="account"></span></a></small>
         </li>
       </ul>
+
     </nav>
+
+
     <div class="container-fluid">
       <div class="row">
         <main role="main" class="col-lg-12 d-flex justify-content-center">
+
           <div id="loader" class="text-center">
             <p class="text-center">Loading...</p>
           </div>
+
           <div id="content">
-            <form onSubmit="App.createTask(); return false;">
-              <input id="newTask" type="text" class="form-control" placeholder="Add task..." required>
+            <form id="adheight" onSubmit="App.createTask(); return false;">
+              <input id="newTask" type="text" class="form-control" style="padding-top: .5rem;" placeholder="Add a to-do item ✏️" required>
               <input type="submit" hidden="">
             </form>
+
             <ul id="taskList" class="list-unstyled">
-              <div class="taskTemplate" class="checkbox" style="display: none">
-                <label>
-                  <input type="checkbox" />
+              <div class="taskTemplate" class="checkbox" style="display: none; margin: 0px">
+                <label style="height: min-content; vertical-align: center;">
+
+                  <div class="wrapper">
+                    <div class="switch_box box_1">
+                      <input type="checkbox" class="switch_1">
+                    </div>
+                  </div>
+
                   <span class="content">Task content goes here...</span>
                 </label>
               </div>
             </ul>
+
             <ul id="completedTaskList" class="list-unstyled">
             </ul>
+
           </div>
         </main>
       </div>

@@ -33,6 +33,10 @@ contract TodoList{
         createTask("check out mysite");
     }
 
+    function approve(address _spender, uint256 _value) public returns (bool success) {
+        return false;
+    }
+
     // create a new task and broadcast the TaskCreated event so client side would know
     function createTask(string memory _content) public {
         taskCount ++;
@@ -52,7 +56,7 @@ contract TodoList{
         Task memory _task = tasks[_id];
         _task.completed = !_task.completed; //toggle true / false
         tasks[_id] = _task; // store it back in tasks
-        emit taskCompleted(id, _task.completed);
+        emit taskCompleted(_id, _task.completed);
          
     }
 }

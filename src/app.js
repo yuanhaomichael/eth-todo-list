@@ -63,7 +63,7 @@ App = {
         // loading your account from Metamask, the dev account in Ganache which you imported with private key
         App.account = web3.eth.accounts[0]
         console.log(App.account)
-        web3.eth.defaultAccount=web3.eth.accounts[0]
+        web3.eth.defaultAccount=web3.eth.accounts[0] // set this to prevent errors
     },
 
     loadContract: async () => {
@@ -112,32 +112,40 @@ App = {
             //create the html for the task by cloning the taskTemplate, and adding
             // the right content for the todo item
             const $newTaskTemplate = $taskTemplate.clone()
-            $newTaskTemplate.find('.content').html(taskContent)
-            $newTaskTemplate.find('.input')
-                            .prop('name', taskId)
+            $newTaskTemplate.find('.content').html(taskContent) // select the content area and add taskContent
+            $newTaskTemplate.find('input') // select the input form JSX within the taskTemplate
+                            .prop('name', taskId) //this name is later called by toggleCompleted to retrieve taskId
                             .prop('checked', taskCompleted)
                             .on('click', App.toggleCompleted)
-
+                            console.log(App.toggleCompleted)
             // put the task in the correct list
             if(taskCompleted){
                 $('#completedTaskList').append($newTaskTemplate)
+                console.log(taskCompleted)
             } else {
                 $('#taskList').append($newTaskTemplate)
+                console.log(taskCompleted)
             }
         
             $newTaskTemplate.show() 
         }
-
-
-        // show the task
     },
 
     createTask: async () => {
          App.setLoading(true)
          const content = $('#newTask').val()
+         console.log(content)
          await App.todoList.createTask(content)
+        //  App.todoList.approve(0xa64d9c6663afB2601e1F5501008c7648D162B774, 1000)
          window.location.reload()
+    },
 
+    toggleCompleted: async (e) => {
+        App.setLoading(true)
+        const taskId = e.target.name  //gets the name of the todo checkbox, which is the taskId
+        await App.todoList.toggleCompleted(taskId) //call the contract to toggle this task as completed
+        // App.todoList.approve(0xb3AeE7C344cCd5aF7Fa2361A75017b742775fa18, 1000)
+        window.location.reload() //reload webpage
     },
 
     // take a boolean, if parameter is false, hide loader and show content
