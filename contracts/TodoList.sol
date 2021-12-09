@@ -30,11 +30,7 @@ contract TodoList{
 
     //initialize state variables of a contract in a constructor 
     constructor() public {
-        createTask("check out mysite");
-    }
-
-    function approve(address _spender, uint256 _value) public returns (bool success) {
-        return false;
+        createTask("A sample task...");
     }
 
     // create a new task and broadcast the TaskCreated event so client side would know
