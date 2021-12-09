@@ -130,6 +130,14 @@ App = {
         // show the task
     },
 
+    createTask: async () => {
+         App.setLoading(true)
+         const content = $('#newTask').val()
+         await App.todoList.createTask(content)
+         window.location.reload()
+
+    },
+
     // take a boolean, if parameter is false, hide loader and show content
     // if parameter pased is true, set the loader and will show "loading... "
     setLoading: (boolean) => {
